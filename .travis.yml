@@ -9,4 +9,6 @@ install:
   pip install openpyxl
   
 script:
+  pwd
+  cd Lauguage
   python LanguageParse.py
