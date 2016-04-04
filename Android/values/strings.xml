@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<resources>
+  <string name="account_activating">Activating…</string>
+  <string name="account_activation_failed">Activation could not be\ncompleted successfully.\n\nPlease try to activate it again.\nIf problem presists,\ncontact customer support at your video service provider</string>
+  <string name="account_activation_retry">Retry</string>
+</resources>

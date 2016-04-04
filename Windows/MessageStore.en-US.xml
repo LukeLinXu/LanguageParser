@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<MessageStore CultureName="English" EnglishName="English">
+  <Message id="account_activating">Activating…</Message>
+  <Message id="account_activation_failed">Activation could not be\ncompleted successfully.\n\nPlease try to activate it again.\nIf problem presists,\ncontact customer support at your video service provider</Message>
+  <Message id="account_activation_retry">Retry</Message>
+</MessageStore>
