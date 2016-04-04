@@ -6,8 +6,7 @@ python:
     - nightly
     
 install:
-  pip openpyxl
+  pip install openpyxl
   
 script:
-
-  python LanguageParse
+  python LanguageParse.py
