@@ -40,7 +40,10 @@ def read_excel(file='LanguageParser1.xlsx'):
         cells = []
         for item in lang_list:
             cell = sheet_ranges.cell(row = rowcount, column = position)
-            cells.append(remove_hyper_link(cell.value))
+            value = remove_hyper_link(cell.value)
+            if value != None:
+                value = value.replace('\\"', '\"')
+            cells.append(value)
             position = position + 1
         if id.value == None:
             break
@@ -51,7 +54,7 @@ def read_excel(file='LanguageParser1.xlsx'):
             for map, cell in zip(ios_lists, cells):
                 map.append((id.value, cell))
             for map, cell in zip(windows_lists, cells):
-                map.append((id.value, cell))
+                map.append((id.value, windows_formatter(cell)))
         else:
             if "ANDROID" in platform.value:
                 for map, cell in zip(android_lists, cells):
@@ -63,7 +66,7 @@ def read_excel(file='LanguageParser1.xlsx'):
 
             if "WINDOWS" in platform.value:
                 for map, cell in zip(windows_lists, cells):
-                    map.append((id.value, cell))
+                    map.append((id.value, windows_formatter(cell)))
 
     for map, lang in zip(android_lists, lang_list):
         # map = sorted(map.items())
@@ -167,6 +170,16 @@ def android_formatter(data):
     position = 1
     while '%S%' in data:
         data = data.replace('%S%', '%'+str(position)+'$s', 1)
+        position = position+1
+    return data
+
+def windows_formatter(data):
+    while '%L%' in data or '%D%' in data:
+        data = data.replace('%L%', '%S%')
+        data = data.replace('%D%', '%S%')
+    position = 0
+    while '%S%' in data:
+        data = data.replace('%S%', '{'+str(position)+'}', 1)
         position = position+1
     return data
 
