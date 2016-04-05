@@ -52,7 +52,7 @@ def read_excel(file='LanguageParser1.xlsx'):
             for map, cell in zip(android_lists, cells):
                 map.append((id.value, android_formatter(cell)))
             for map, cell in zip(ios_lists, cells):
-                map.append((id.value, cell))
+                map.append((id.value, ios_formatter(cell)))
             for map, cell in zip(windows_lists, cells):
                 map.append((id.value, windows_formatter(cell)))
         else:
@@ -62,7 +62,7 @@ def read_excel(file='LanguageParser1.xlsx'):
 
             if "IOS" in platform.value:
                 for map, cell in zip(ios_lists, cells):
-                    map.append((id.value, cell))
+                    map.append((id.value, ios_formatter(cell)))
 
             if "WINDOWS" in platform.value:
                 for map, cell in zip(windows_lists, cells):
@@ -181,6 +181,12 @@ def windows_formatter(data):
     while '%S%' in data:
         data = data.replace('%S%', '{'+str(position)+'}', 1)
         position = position+1
+    return data
+
+def ios_formatter(data):
+    data = data.replace('%L%', '%lu')
+    data = data.replace('%S%', '%@')
+    data = data.replace('%D%', '%d')
     return data
 
 if __name__ == '__main__':
