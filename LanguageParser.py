@@ -28,9 +28,9 @@ def read_excel(file='LanguageParser.xlsx'):
     for item in lang_list:
         print(item)
 
-    android_maps = [dict() for item in lang_list]
-    ios_maps = [dict() for item in lang_list]
-    windows_maps = [dict() for item in lang_list]
+    android_lists = [list() for item in lang_list]
+    ios_lists = [list() for item in lang_list]
+    windows_lists = [list() for item in lang_list]
 
     rowcount = 2
     for row in sheet_ranges.rows:
@@ -46,33 +46,33 @@ def read_excel(file='LanguageParser.xlsx'):
             break
         rowcount = rowcount + 1
         if  platform.value == None or 'COMMON' in platform.value:
-            for map, cell in zip(android_maps, cells):
-                map[id.value] = cell.value
-            for map, cell in zip(ios_maps, cells):
-                map[id.value] = cell.value
-            for map, cell in zip(windows_maps, cells):
-                map[id.value] = cell.value
+            for map, cell in zip(android_lists, cells):
+                map.append((id.value, cell.value))
+            for map, cell in zip(ios_lists, cells):
+                map.append((id.value, cell.value))
+            for map, cell in zip(windows_lists, cells):
+                map.append((id.value, cell.value))
         else:
             if "ANDROID" in platform.value:
-                for map, cell in zip(android_maps, cells):
-                    map[id.value] = cell.value
+                for map, cell in zip(android_lists, cells):
+                    map.append((id.value, cell.value))
 
             if "IOS" in platform.value:
-                for map, cell in zip(ios_maps, cells):
-                    map[id.value] = cell.value
+                for map, cell in zip(ios_lists, cells):
+                    map.append((id.value, cell.value))
 
             if "WINDOWS" in platform.value:
-                for map, cell in zip(windows_maps, cells):
-                    map[id.value] = cell.value
+                for map, cell in zip(windows_lists, cells):
+                    map.append((id.value, cell.value))
 
-    for map, lang in zip(android_maps, lang_list):
-        map = sorted(map.items())
+    for map, lang in zip(android_lists, lang_list):
+        # map = sorted(map.items())
         createAndroidFile(map, lang)
-    for map, lang in zip(ios_maps, lang_list):
-        map = sorted(map.items())
+    for map, lang in zip(ios_lists, lang_list):
+        # map = sorted(map.items())
         createiOSFile(map, lang)
-    for map, lang in zip(windows_maps, lang_list):
-        map = sorted(map.items())
+    for map, lang in zip(windows_lists, lang_list):
+        # map = sorted(map.items())
         createWindowsFile(map, lang)
 
 def prettify(elem):
