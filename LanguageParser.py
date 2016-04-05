@@ -8,9 +8,8 @@ import sys
 __author__ = 'llin'
 
 
-def read_excel(file='LanguageParser.xlsx'):
+def read_excel(file='LanguageParser1.xlsx'):
     wb = load_workbook(filename = file)
-    # wb = load_workbook(filename = 'fling_string_resources.xlsx')
     # pick the first sheet
     sheet_ranges = wb[wb._sheets[0].title]
 
@@ -40,30 +39,31 @@ def read_excel(file='LanguageParser.xlsx'):
         position = position + 2
         cells = []
         for item in lang_list:
-            cells.append(sheet_ranges.cell(row = rowcount, column = position))
+            cell = sheet_ranges.cell(row = rowcount, column = position)
+            cells.append(cell.value)
             position = position + 1
         if id.value == None:
             break
         rowcount = rowcount + 1
         if  platform.value == None or 'COMMON' in platform.value:
             for map, cell in zip(android_lists, cells):
-                map.append((id.value, cell.value))
+                map.append((id.value, android_formatter(cell)))
             for map, cell in zip(ios_lists, cells):
-                map.append((id.value, cell.value))
+                map.append((id.value, cell))
             for map, cell in zip(windows_lists, cells):
-                map.append((id.value, cell.value))
+                map.append((id.value, cell))
         else:
             if "ANDROID" in platform.value:
                 for map, cell in zip(android_lists, cells):
-                    map.append((id.value, cell.value))
+                    map.append((id.value, android_formatter(cell)))
 
             if "IOS" in platform.value:
                 for map, cell in zip(ios_lists, cells):
-                    map.append((id.value, cell.value))
+                    map.append((id.value, cell))
 
             if "WINDOWS" in platform.value:
                 for map, cell in zip(windows_lists, cells):
-                    map.append((id.value, cell.value))
+                    map.append((id.value, cell))
 
     for map, lang in zip(android_lists, lang_list):
         # map = sorted(map.items())
@@ -154,6 +154,15 @@ def createiOSFile(map, initial):
         f.write(content)
         f.close()
 
+def android_formatter(data):
+    while '%L%' in data or '%D%' in data:
+        data = data.replace('%L%', '%S%')
+        data = data.replace('%D%', '%S%')
+    position = 1
+    while '%S%' in data:
+        data = data.replace('%S%', '%'+str(position)+'$s', 1)
+        position = position+1
+    return data
 
 if __name__ == '__main__':
     if(len(sys.argv)<2):
