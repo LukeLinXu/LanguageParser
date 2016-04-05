@@ -40,7 +40,7 @@ def read_excel(file='LanguageParser1.xlsx'):
         cells = []
         for item in lang_list:
             cell = sheet_ranges.cell(row = rowcount, column = position)
-            cells.append(cell.value)
+            cells.append(remove_hyper_link(cell.value))
             position = position + 1
         if id.value == None:
             break
@@ -153,6 +153,12 @@ def createiOSFile(map, initial):
     with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
         f.write(content)
         f.close()
+
+def remove_hyper_link(data):
+    if data != None and '=HYPERLINK' in data:
+        return data.split('"')[-2]
+    else:
+        return data
 
 def android_formatter(data):
     while '%L%' in data or '%D%' in data:
