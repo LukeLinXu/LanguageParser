@@ -78,7 +78,7 @@ def read_excel(file='LanguageParser.xlsx'):
 def prettify(elem):
     rough_string = tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
-    return reparsed.toprettyxml(indent="  ")
+    return reparsed.toprettyxml(indent="    ", encoding='utf-8')
 
 
 def createAndroidFile(map, initial):
@@ -94,7 +94,7 @@ def createAndroidFile(map, initial):
     path = 'Android'+os.sep+foldername
     os.makedirs(path, exist_ok=True)
     with open(path+os.sep+'strings.xml', 'w', encoding="utf-8") as f:
-        f.write(prettify(top))
+        f.write(prettify(top).decode('utf-8'))
         f.close()
 
 def createWindowsFile(map, initial):
@@ -119,7 +119,7 @@ def createWindowsFile(map, initial):
     path = 'Windows'
     os.makedirs(path, exist_ok=True)
     with open(path+os.sep+filename+'.xml', 'w', encoding="utf-8") as f:
-        f.write(prettify(top))
+        f.write(prettify(top).decode('utf-8'))
         f.close()
 
 def createiOSFile(map, initial):
