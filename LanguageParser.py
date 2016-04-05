@@ -131,11 +131,24 @@ def createiOSFile(map, initial):
     else:
         initial = 'en'
     foldername = initial+foldername
-    path = 'iOS'+os.sep+foldername
+
+    # create for ObjectC
+    path = 'iOS'+os.sep+'ObjectC'+os.sep+foldername
     os.makedirs(path, exist_ok=True)
     content = []
     for key, value in map:
         content.append('''"{0}" = "{1}";\n'''.format(key, value))
+    content = ''.join(content)
+    with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
+        f.write(content)
+        f.close()
+
+    # create for swift
+    path = 'iOS'+os.sep+'Swift'+os.sep+foldername
+    os.makedirs(path, exist_ok=True)
+    content = []
+    for key, value in map:
+        content.append('''{0} = "{1}";\n'''.format(key, value))
     content = ''.join(content)
     with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
         f.write(content)
