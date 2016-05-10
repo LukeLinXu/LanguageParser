@@ -2,10 +2,8 @@
 
 #LanguageParser
 ##User Guide:
-1. install python3
-2. install openpyxl
-
-  pip3 install openpyxl
+- install python3
+- install openpyxl: pip3 install openpyxl
   
 LanguageParser will help developer solve the issue when deal with multiple language support for multiple platform
 
