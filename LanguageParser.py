@@ -8,7 +8,7 @@ import sys
 __author__ = 'llin'
 
 
-def read_excel(file='LanguageParser1.xlsx'):
+def read_excel(file='LanguageParser.xlsx'):
     wb = load_workbook(filename = file)
     # pick the first sheet
     sheet_ranges = wb[wb._sheets[0].title]
@@ -48,25 +48,26 @@ def read_excel(file='LanguageParser1.xlsx'):
         if id.value == None:
             break
         rowcount = rowcount + 1
-        if  platform.value == None or 'COMMON' in platform.value:
-            for map, cell in zip(android_lists, cells):
-                map.append((id.value, android_formatter(cell)))
-            for map, cell in zip(ios_lists, cells):
-                map.append((id.value, ios_formatter(cell)))
-            for map, cell in zip(windows_lists, cells):
-                map.append((id.value, windows_formatter(cell)))
-        else:
-            if "ANDROID" in platform.value:
+        if  platform.value != None:
+            if 'COMMON' in platform.value:
                 for map, cell in zip(android_lists, cells):
                     map.append((id.value, android_formatter(cell)))
-
-            if "IOS" in platform.value:
                 for map, cell in zip(ios_lists, cells):
                     map.append((id.value, ios_formatter(cell)))
-
-            if "WINDOWS" in platform.value:
                 for map, cell in zip(windows_lists, cells):
                     map.append((id.value, windows_formatter(cell)))
+            else:
+                if "ANDROID" in platform.value:
+                    for map, cell in zip(android_lists, cells):
+                        map.append((id.value, android_formatter(cell)))
+
+                if "IOS" in platform.value:
+                    for map, cell in zip(ios_lists, cells):
+                        map.append((id.value, ios_formatter(cell)))
+
+                if "WINDOWS" in platform.value:
+                    for map, cell in zip(windows_lists, cells):
+                        map.append((id.value, windows_formatter(cell)))
 
     for map, lang in zip(android_lists, lang_list):
         # map = sorted(map.items())
@@ -87,6 +88,7 @@ def prettify(elem):
 def createAndroidFile(map, initial):
     top = Element('resources')
     for key, value in map:
+        value = android_escape(value)
         child = SubElement(top, 'string', {'name':key})
         child.text = value
     foldername = 'values'
@@ -140,6 +142,7 @@ def createiOSFile(map, initial):
     os.makedirs(path, exist_ok=True)
     content = []
     for key, value in map:
+        value = ios_escape(value)
         content.append('''"{0}" = "{1}";\n'''.format(key, value))
     content = ''.join(content)
     with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
@@ -151,6 +154,7 @@ def createiOSFile(map, initial):
     os.makedirs(path, exist_ok=True)
     content = []
     for key, value in map:
+        value = ios_escape(value)
         content.append('''{0} = "{1}";\n'''.format(key, value))
     content = ''.join(content)
     with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
@@ -182,6 +186,16 @@ def windows_formatter(data):
         data = data.replace('%S%', '{'+str(position)+'}', 1)
         position = position+1
     return data
+
+def ios_escape(text):
+    if '''"''' in text:
+        text = text.replace('''"''', '''\\"''')
+    return text
+
+def android_escape(text):
+    if """'""" in text:
+        text = text.replace("""'""", """\\'""")
+    return text
 
 def ios_formatter(data):
     data = data.replace('%L%', '%lu')
