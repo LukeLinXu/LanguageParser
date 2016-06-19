@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MessageStore CultureName="Chinese" EnglishName="Chinese">
+    <Message id="account_activating">激活</Message>
+    <Message id="account_activation_failed">激活未成功</Message>
+    <Message id="account_activation_retry">重试</Message>
+</MessageStore>
