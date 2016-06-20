@@ -12,3 +12,12 @@ script:
   pwd
   cd Lauguage
   python LanguageParse.py
+
+deploy:
+  provider: releases
+  api_key: "ca763dd3fddb89250bffbff6cded59bc20386270"
+  file:
+    -Android/values/strings.xml
+  skip_cleanup: true
+  on:
+    tags: true
