@@ -10,7 +10,7 @@ deploy:
   provider: releases
   api_key:
     secure: vEcuq42rFn3RFlj1jTWxQNWY0LeeZFtJL/oGxiFw257C8nGPGSfyOIad0I9d+NbIC6zaTSQcNbLVmrtc84B+FI2gL4zbT7/A6bAyl/GLoRa0s0cHgX7PGU4Yn9WBBlxRtuamvQ3Q+Hn+EPHKaE39IXOlNzvM9M917ecrno6sslPyQotokEGFQS3OLqCEkenwk9h29VKb68Kk7tQVah3TjUlWMUTfZq2LQW/ig5IO5unzzpC/FrlpG24VLS+Q9lj0Z8l2K7K7V3WYgkC05Fo48tQ/08+Njv+hkZfElh9ohA3j5rXIgt18JmxlcBV9vpIT7xZgnnzxgJk2O7hsSGY+pLsTArUswGVRVFL/kSwC+LXVijqEPYYPTUYKwQqrbW9vU6eLavp5oRBue2FEmh0xqndpKWCTLcTk4vYutm9cZD3DIiEnoRQDf88XJfNTMc8AJseTL7W9KRJsCFllI98zl0kaviG9HFPKZEuTnmASNLrD7cwgRgvFzKRkRbKDoVVluN38QtZ33wzq3ajSu5qaQ3NyJlLgn6BJrOWw/oGQyM6mclsyibYYMPSn+rGDjMP+0EJ4DpCsD8/oQAqv5Z9Ql9EcjB68Jz3OdR4txJQHW6QguT6ci53edkyd++K21sL024qSfSPqZZDkZZvmi74lcpZb7pmcp0OKNTmGrV/16ew=
-  file: Android/
+  file: Android/values-zh/strings.xml
   skip_cleanup: true
   on:
     repo: LukeLinXu/LanguageParser
