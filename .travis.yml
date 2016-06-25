@@ -13,4 +13,4 @@ deploy:
   file: Android/values-zh/strings.xml
   skip_cleanup: true
   on:
-    repo: LukeLinXu/LanguageParser
+    tags: true
