@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="account_activating">激活</string>
+    <string name="account_activating">激活%1$s</string>
     <string name="account_activation_failed">激活未成功</string>
     <string name="account_activation_retry">重试</string>
+    <string name="account_info">名字是%1$s, 年龄是%2$s</string>
 </resources>

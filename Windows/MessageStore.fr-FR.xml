@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MessageStore CultureName="French" EnglishName="French">
-    <Message id="account_activating">Activation …</Message>
+    <Message id="account_activating">Activation …{0}</Message>
     <Message id="account_activation_failed">Échec de l\'activation\n\nVeuillez essayer d\'activer à nouveau\nSi le problème persiste,\nSi le problème persiste\ncontacter le service client à votre fournisseur de services vidéo</Message>
     <Message id="account_activation_retry">Réessayer</Message>
+    <Message id="account_info">Name is {0}, age is {1}</Message>
 </MessageStore>
