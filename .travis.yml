@@ -9,11 +9,9 @@ script:
 - pwd 
 - ls
 - python3 LanguageParser.py
-- git config --global user.email "dev.linxu@gmail.com"
-- git config --global user.name "Luke Lin"
-- git add .
-- git commit -a -m "build"
-- git push
+# - git add .
+# - git commit -a -m "build"
+# - git push
   
 deploy:
   provider: releases
