@@ -6,13 +6,13 @@ python:
 - nightly
 install: pip install openpyxl
 script: 
-  pwd 
-  cd LauguageParser 
-  pwd
-  python LanguageParse.py
-  git add .
-  git commit -a -m "build"
-  git push
+- pwd 
+- cd LauguageParser 
+- pwd
+- python LanguageParse.py
+- git add .
+- git commit -a -m "build"
+- git push
   
 deploy:
   provider: releases
