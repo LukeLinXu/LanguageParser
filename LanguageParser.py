@@ -168,19 +168,24 @@ def remove_hyper_link(data):
         return data
 
 def android_formatter(data):
-    while '%L%' in data or '%D%' in data:
-        data = data.replace('%L%', '%S%')
-        data = data.replace('%D%', '%S%')
     position = 1
-    while '%S%' in data:
-        data = data.replace('%S%', '%'+str(position)+'$s', 1)
-        position = position+1
+    while '%S%' in data or '%D%' in data or '%L%' in data:
+        pos_s = data.find('%S%')
+        pos_d = data.find('%D%')
+        pos_l = data.find('%L%')
+        pos = min([x for x in [pos_d, pos_s, pos_l] if x != -1])
+        if pos_s == pos:
+            data = data.replace('%S%', '%'+str(position)+'$s', 1)
+        elif pos_d == pos:
+            data = data.replace('%D%', '%' + str(position) + '$d', 1)
+        elif pos_l == pos:
+            data = data.replace('%L%', '%' + str(position) + '$l', 1)
+        position += 1
     return data
 
 def windows_formatter(data):
-    while '%L%' in data or '%D%' in data:
-        data = data.replace('%L%', '%S%')
-        data = data.replace('%D%', '%S%')
+    data = data.replace('%L%', '%S%')
+    data = data.replace('%D%', '%S%')
     position = 0
     while '%S%' in data:
         data = data.replace('%S%', '{'+str(position)+'}', 1)
