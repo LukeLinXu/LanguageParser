@@ -8,7 +8,7 @@ install: pip install openpyxl
 script: 
 - pwd 
 - ls
-- python3 LanguageParse.py
+- python3 LanguageParser.py
 - git add .
 - git commit -a -m "build"
 - git push
