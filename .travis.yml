@@ -5,7 +5,14 @@ python:
 - 3.5
 - nightly
 install: pip install openpyxl
-script: pwd cd LauguageParser python LanguageParse.py
+script: 
+  pwd 
+  cd LauguageParser 
+  python LanguageParse.py
+  git add .
+  git commit -a -m "build"
+  git push
+  
 deploy:
   provider: releases
   api_key:
