@@ -10,7 +10,7 @@ script:
   cd LauguageParser 
   python LanguageParse.py
   git add .
-  git commit -a -m "build" (do not need commit message either)
+  git commit -a -m "build"
   git push
   
 deploy:
