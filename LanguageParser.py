@@ -10,11 +10,14 @@ __author__ = 'llin'
 
 def check_duplicate_id(lists, platform):
     for item in lists:
-        hash_map = set()
+        hash_set = set()
         for value in item:
-            hash_map.add(value[0])
-        if len(hash_map) != len(item):
-            print("check id", platform, "fail")
+            id = value[0]
+            if id in hash_set:
+                print("check id", platform, "fail for duplicate id", id)
+                break
+            else:
+                hash_set.add(id)
         else:
             print("check id", platform, "pass")
 
