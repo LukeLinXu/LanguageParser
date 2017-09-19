@@ -51,23 +51,29 @@ def read_excel(file='LanguageParser.xlsx'):
         if  platform.value != None:
             if 'COMMON' in platform.value:
                 for map, cell in zip(android_lists, cells):
-                    map.append((id.value, android_formatter(cell)))
+                    if cell != None:
+                        map.append((id.value, android_formatter(cell)))
                 for map, cell in zip(ios_lists, cells):
-                    map.append((id.value, ios_formatter(cell)))
+                    if cell != None:
+                        map.append((id.value, ios_formatter(cell)))
                 for map, cell in zip(windows_lists, cells):
-                    map.append((id.value, windows_formatter(cell)))
+                    if cell != None:
+                        map.append((id.value, windows_formatter(cell)))
             else:
                 if "ANDROID" in platform.value:
                     for map, cell in zip(android_lists, cells):
-                        map.append((id.value, android_formatter(cell)))
+                        if cell != None:
+                            map.append((id.value, android_formatter(cell)))
 
                 if "IOS" in platform.value:
                     for map, cell in zip(ios_lists, cells):
-                        map.append((id.value, ios_formatter(cell)))
+                        if cell != None :
+                            map.append((id.value, ios_formatter(cell)))
 
                 if "WINDOWS" in platform.value:
                     for map, cell in zip(windows_lists, cells):
-                        map.append((id.value, windows_formatter(cell)))
+                        if cell != None:
+                            map.append((id.value, windows_formatter(cell)))
 
     for map, lang in zip(android_lists, lang_list):
         # map = sorted(map.items())
