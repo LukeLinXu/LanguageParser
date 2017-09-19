@@ -8,6 +8,17 @@ import sys
 __author__ = 'llin'
 
 
+def check_duplicate_id(lists, platform):
+    for item in lists:
+        hash_map = set()
+        for value in item:
+            hash_map.add(value[0])
+        if len(hash_map) != len(item):
+            print("check id", platform, "fail")
+        else:
+            print("check id", platform, "pass")
+
+
 def read_excel(file='LanguageParser.xlsx'):
     wb = load_workbook(filename = file)
     # pick the first sheet
@@ -74,6 +85,10 @@ def read_excel(file='LanguageParser.xlsx'):
                     for map, cell in zip(windows_lists, cells):
                         if cell != None:
                             map.append((id.value, windows_formatter(cell)))
+
+    check_duplicate_id(android_lists, "android")
+    check_duplicate_id(ios_lists, "ios")
+    check_duplicate_id(windows_lists, "windows")
 
     for map, lang in zip(android_lists, lang_list):
         # map = sorted(map.items())
