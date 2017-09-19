@@ -3,5 +3,6 @@
     <string name="account_activating">Activation …%1$s</string>
     <string name="account_activation_failed">Échec de l\\'activation\n\nVeuillez essayer d\\'activer à nouveau\nSi le problème persiste,\nSi le problème persiste\ncontacter le service client à votre fournisseur de services vidéo</string>
     <string name="account_activation_retry">Réessayer</string>
-    <string name="account_info">Name is %1$s, age is %2$s</string>
+    <string name="account_info">Name is %1$s, age is %2$d</string>
+    <string name="account_for_android_string">Android String fr</string>
 </resources>
