@@ -1,4 +1,4 @@
-account_activating = "Activation …%@";
-account_activation_failed = "Échec de l\'activation\n\nVeuillez essayer d\'activer à nouveau\nSi le problème persiste,\nSi le problème persiste\ncontacter le service client à votre fournisseur de services vidéo";
-account_activation_retry = "Réessayer";
-account_info = "Name is %@, age is %d";
+account_activating = "Activation …%@"
+account_activation_failed = "Échec de l\'activation\n\nVeuillez essayer d\'activer à nouveau\nSi le problème persiste,\nSi le problème persiste\ncontacter le service client à votre fournisseur de services vidéo"
+account_activation_retry = "Réessayer"
+account_info = "Name is %@, age is %d"

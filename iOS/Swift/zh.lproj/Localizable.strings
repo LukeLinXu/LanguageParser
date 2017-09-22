@@ -1,5 +1,5 @@
-account_activating = "激活%@";
-account_activation_failed = "激活未成功";
-account_activation_retry = "重试";
-account_info = "名字是%@, 年龄是%d";
-account_for_ios_string = "iOS String zh";
+account_activating = "激活%@"
+account_activation_failed = "激活未成功"
+account_activation_retry = "重试"
+account_info = "名字是%@, 年龄是%d"
+account_for_ios_string = "iOS String zh"

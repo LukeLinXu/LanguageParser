@@ -179,7 +179,7 @@ def createiOSFile(map, initial):
     content = []
     for key, value in map:
         value = ios_escape(value)
-        content.append('''{0} = "{1}";\n'''.format(key, value))
+        content.append('''{0} = "{1}"\n'''.format(key, value))
     content = ''.join(content)
     with open(path+os.sep+'Localizable.strings', 'w', encoding="utf-8") as f:
         f.write(content)
